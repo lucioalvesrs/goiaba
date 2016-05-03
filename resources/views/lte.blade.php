@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>Controle de Acesso Rede Virtua</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -116,9 +116,49 @@ desired effect
               <span class="label label-warning">{{$menu["USR"]}}</span>
             </a>
           </li>
+        <!-- User Account: style can be found in dropdown.less -->
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <canvas class="user-image" id="UgCanvas" width="26" height="26"></canvas>
+            <span class="hidden-xs">{{ Auth::user()->name }}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <!-- User image -->
+            <li class="user-header">
+              <canvas class="user-image" id="UgCanvas" width="26" height="26"></canvas>
+              <p>
+                {{ Auth::user()->name }}
+                <small>{{ Auth::user()->email }}</small>
+              </p>
+            </li>
+            <!-- Menu Body -->
+            <li class="user-body">
+              <div class="row">
+                <div class="col-xs-4 text-center">
+                  <a href="#">Followers</a>
+                </div>
+                <div class="col-xs-4 text-center">
+                  <a href="#">Sales</a>
+                </div>
+                <div class="col-xs-4 text-center">
+                  <a href="#">Friends</a>
+                </div>
+              </div>
+              <!-- /.row -->
+            </li>
+            <!-- Menu Footer-->
+            <li class="user-footer">
+              <div class="pull-left">
+                <a href="#" class="btn btn-default btn-flat">Profile</a>
+              </div>
+              <div class="pull-right">
+                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+              </div>
+            </li>
           </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
+
+
+        </li>
           </ul>
       </div>
     </nav>
@@ -129,19 +169,7 @@ desired effect
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="{{url('lte/dist/img/avatar5.png')}}" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Usuario</p>
-          <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-
-      <!-- search form (Optional) -->
+     <!-- search form (Optional) -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -301,5 +329,23 @@ desired effect
 </body>
 <!-- ./wrapper -->
 
+
+
+<script type="text/javascript">
+  var c=document.getElementById("UgCanvas");
+  var ctx=c.getContext("2d");
+  ctx.fillStyle="#0000FF";
+  ctx.beginPath();
+  ctx.arc(13,13,13,0,Math.PI*2,true);
+  ctx.closePath();
+  ctx.fill();
+  //texto
+  ctx.strokeStyle = "#FFFFFF";
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "bold 12pt sans-serif";
+  ctx.fillText("LA",7,18,12)
+</script>
+
 @yield('javascript')
 </html>
+
